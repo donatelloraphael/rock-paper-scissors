@@ -1,4 +1,4 @@
-# A gameof Rock, Paper, Scissors
+# A game of Rock, Paper, Scissors
 
 For The Odin Project.
 
