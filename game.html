@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock, Paper, Scissors</title>
+  </head>
+
+<body>
+  <script type="text/javascript">
+
+    function computerPlay() {
+      randNumber = Math.floor(Math.random() * 3);
+      if (randNumber === 0) return "rock";
+      else if (randNumber === 1) return "paper";
+      else return "scissors";
+    }
+
+    function play(playerSelection, computerSelection) {
+      if (playerSelection === computerSelection) {
+        alert("Tie! Try again.");
+        return "tie";
+      }
+
+      if (playerSelection === "rock") {
+        if (computerSelection === "paper") {
+          alert("You Lose! Paper beats Rock.");
+          return "lose";
+        }
+        if (computerSelection === "scissors") {
+          alert("You win! Rock beats Scissors.");
+          return "win";
+        }
+      }
+  
+      if (playerSelection === "paper") {
+        if (computerSelection === "scissors") {
+          alert("You Lose! Scissors beats Paper.");
+          return "lose";
+        }
+        if (computerSelection === "rock") {
+          alert("You win! Paper beats Rock.");
+          return "win";
+        }
+      }
+
+      if (playerSelection === "scissors") {
+        if (computerSelection === "rock") {
+          alert("You Lose! Rock beats Scissors.");
+          return "lose";
+        }
+        if (computerSelection === "paper") {
+          alert("You win! Scissors beats Paper.");
+          return "win";
+        }
+      }
+    }
+
+    function getUserInput() {
+      for (;;) {
+        input = window.prompt("Enter your choice: ");
+        input = input.toLowerCase();
+        if (input != "rock" && input != "paper" && input != "scissors") {
+          alert("You have entered an invalid choice! Try again.");
+          continue;
+        }
+        return input;
+      }
+    }
+
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
+
+      for (i = 0; i < 5; i++) {
+        let playerSelection = getUserInput();
+        let computerSelection = computerPlay();
+        let result = play(playerSelection, computerSelection);
+
+        if (result == "win") {
+          playerScore++;
+        } 
+        else if (result == "lose") {
+          computerScore++;
+        } else { i--; }
+
+      }
+
+      if (playerScore > computerScore) {
+        alert(`You WON by winning ${playerScore}/5 games!`);
+      }
+      else if (playerScore < computerScore) {
+        alert(`You LOST by losing ${computerScore}/5 games!`);
+      }
+    }
+
+  </script>
+  
+</body>
+</html>
